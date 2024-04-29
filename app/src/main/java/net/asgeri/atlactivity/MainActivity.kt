@@ -16,9 +16,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonStart.setOnClickListener {
-            val intent=Intent(this@MainActivity,GameActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 }
