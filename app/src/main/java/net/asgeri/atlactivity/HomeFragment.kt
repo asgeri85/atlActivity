@@ -14,8 +14,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val args:HomeFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +28,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val list= listOf("afasfsfsdf","546464645","oıtyıoyrıyoryo")
-
-        binding.textView2.text=list[args.index]
 
     }
 
