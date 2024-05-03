@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import net.asgeri.atlactivity.databinding.CustomDialogBinding
+import androidx.navigation.fragment.findNavController
 import net.asgeri.atlactivity.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -29,40 +27,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.button.setOnClickListener {
-           createCustomDialog()
-        }
+        val users = arrayListOf<User>(
+            User("ali", R.drawable.gul),
+            User("fatih", R.drawable.agla), User("adadas", R.drawable.icon)
+        )
 
-    }
+        val nameAdapter = NameAdapter()
 
-    private fun createDialog() {
-        val dialog = AlertDialog.Builder(requireContext())
+        nameAdapter.updateList(users)
 
-        dialog.setTitle("Hata 404")
-        dialog.setMessage("bir hata meydana geldi")
-        dialog.setNegativeButton("Xeyir") { _, _ ->
-            Toast.makeText(context, "Xeyiri basdiniz", Toast.LENGTH_SHORT).show()
-        }
+        binding.rvHome.adapter = nameAdapter
 
-        dialog.setPositiveButton("Beli") { _, _ ->
-            Toast.makeText(context, "Beliye basdiniz", Toast.LENGTH_SHORT).show()
-        }
 
-        dialog.create().show()
-    }
 
-    private fun createCustomDialog() {
-        val dialogBinding = CustomDialogBinding.inflate(layoutInflater)
-
-        val dialog = AlertDialog.Builder(requireContext()).create()
-
-        dialog.setView(dialogBinding.root)
-
-        dialog.show()
-
-        dialogBinding.button3.setOnClickListener {
-            dialog.dismiss()
-        }
 
     }
 
